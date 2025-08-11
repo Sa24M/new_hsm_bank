@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - HSM Bank</title>
+    <link rel="icon" href="/img/homelogo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Banksystem/csspart/register.css">
+</head>
+<body>
+    <div class="register-wrapper">
+        <!-- Left: Registration Form -->
+        <div class="register-left">
+            <div class="register-form-container">
+                <h2>Create Your Account</h2>
+                <!-- Display server error message if present -->
+                <div id="server-error" style="color: red; margin-bottom: 10px;"></div>
+                <script>
+                    const params = new URLSearchParams(window.location.search);
+                    if (params.has("msg")) {
+                        document.getElementById('server-error').textContent = params.get("msg");
+                    }
+                </script>
+                <form method="POST" action="/cgi-bin/register.cgi" class="register-form" autocomplete="off">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="FULLNAME" required />
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="EMAIL" required />
+
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="ADDRESS" required />
+
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="PASSWORD" required />
+                        <button type="button" id="togglePassword" aria-label="Show password">&#128065;</button>
+                    </div>
+
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="CONFIRM_PASSWORD" required />
+
+                    <div class="deposite">
+                        <label for="initialDeposit">Initial Deposit</label>
+                        <input type="number" id="initialDeposit" name="INITIAL_DEPOSIT" min="0" step="1" required />
+                    </div>
+                    <!-- <label for="initialDeposit">Initial Deposit</label>
+                    <input type="number" id="initialDeposit" name="INITIAL_DEPOSIT" min="0" step="1" required /> -->
+
+                    <button type="submit" class="btn-register">Register</button>
+                </form>
+
+                <p class="login-link">
+                    Already have an account? <a href="login.html">Login</a>
+                </p>
+                <div class="social-icons">
+                    <a href="#"><img src="/img/fb-icon.png" alt="Facebook" /></a>
+                    <a href="#"><img src="/img/whats-icon.png" alt="WhatsApp" /></a>
+                    <a href="#"><img src="/img/tel-icon.png" alt="Telegram" /></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Blue Strip with Logo Overlapping -->
+        <div class="register-right">
+            <div class="logo-overlap">
+                <a href="home.html">
+                    <img src="/img/homelogo3d.png" alt="HSM Bank Logo" width="300" height="120" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS to toggle password visibility -->
+    <script>
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const password = document.getElementById("password");
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f5f7fa;
+}
+
+.register-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.register-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.register-form-container {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 25px;
+  box-shadow: 0 8px 32px rgba(26, 35, 126, 0.12);
+  padding: 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.register-form-container h2 {
+  color: #1a237e;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.1rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  background: #f7faff;
+  transition: border-color 0.3s;
+}
+
+.register-form input:focus {
+  border-color: #1a237e;
+  background: #fff;
+  outline: none;
+}
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-wrapper input[type="password"] {
+  width: 100%;
+  box-sizing: border-box; /* include padding and border in width */
+  margin-bottom: 1.5rem; /* same bottom margin as other inputs */
+}
+
+.password-wrapper button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  padding: 0;
+}
+
+.btn-register {
+  width: 100%;
+  background: #1a237e;
+  color: white;
+  padding: 0.9rem 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 0.7rem;
+}
+
+.btn-register:hover {
+  background: #3f51b5;
+}
+
+.login-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.login-link a {
+  color: #1a237e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1.7rem;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e3e7f7;
+  padding: 0.3rem;
+  transition: box-shadow 0.2s;
+}
+
+.social-icons img:hover {
+  box-shadow: 0 2px 8px rgba(26, 35, 126, 0.18);
+}
+
+.register-right {
+  flex: 0.7;
+  background: #206ac8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-overlap {
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
+}
+
+.logo-overlap img {
+  display: block;
+  max-width: 90%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(26, 35, 126, 0.10);
+  background: #fff;
+  padding: 0.5rem 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .register-wrapper {
+      flex-direction: column;
+  }
+  .register-left, .register-right {
+      flex: none;
+      width: 100vw;
+      min-height: 320px;
+  }
+  .register-form-container {
+      max-width: 95vw;
+      padding: 2rem 1rem;
+  }
+  .logo-overlap img {
+      max-width: 70vw;
+  }
+}
+
+/* Make Initial Deposit number input match the other fields */
+.register-form input[type="number"], 
+.deposite input[type="number"] {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1.1rem;
+    border: 1px solid #bdbdbd;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    background: #f7faff;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    /* Fix for Chrome/Safari number field up/down buttons size */
+    height: 50px; /* Match your text and password inputs' height */
+}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HSM Bank</title>
+    <link rel="icon" href="/img/homelogo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/Banksystem/csspart/login.css">
+</head>
+<body>
+    <div class="login-wrapper">
+        <!-- Left: Login Form -->
+        <div class="login-left">
+            <div class="login-form-container">
+                <h2>Welcome to HSM Bank!</h2>
+
+                <!-- Display server error message if present -->
+                <div id="server-error" style="color: red; margin-bottom: 10px;">
+                    <script>
+                        const params = new URLSearchParams(window.location.search);
+                        if (params.has("msg")) {
+                            document.write(decodeURIComponent(params.get("msg")));
+                        }
+                    </script>
+                </div>
+
+                <!-- Login Form -->
+                <form method="POST" action="/cgi-bin/login.cgi" class="login-form" autocomplete="off">
+                    <label for="accountNumber">Account Number</label>
+                    <input type="text" id="accountNumber" name="accountNumber" required />
+                    <small class="error" id="error-accountNumber"></small>
+
+                    <label for="password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" required />
+                        <button type="button" id="togglePassword" aria-label="Show password">&#128065;</button>
+                    </div>
+                    <small class="error" id="error-password"></small>
+                    
+                    <button type="submit" class="btn-login">Login</button>
+                </form>
+
+                <p class="register-text">
+                    Don't have an account? <a href="register.html">Register</a>
+                </p>
+
+                <div class="social-icons">
+                    <a href="#"><img src="/img/fb-icon.png" alt="Facebook" /></a>
+                    <a href="#"><img src="/img/whats-icon.png" alt="WhatsApp" /></a>
+                    <a href="#"><img src="/img/tel-icon.png" alt="Telegram" /></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Blue Strip with Logo Overlapping -->
+        <div class="login-right">
+            <div class="logo-overlap">
+                <a href="home.html">
+                    <img src="/img/homelogo3d.png" alt="HSM Bank Logo" width="300" height="120" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS to toggle password visibility -->
+    <script>
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            const password = document.getElementById("password");
+            const type = password.getAttribute("type") === "password" ? "text" : "password";
+            password.setAttribute("type", type);
+        });
+    </script>
+</body>
+</html>

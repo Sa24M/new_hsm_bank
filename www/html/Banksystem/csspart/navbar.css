@@ -1,0 +1,45 @@
+/* Navbar Styles */
+.navbar {
+    background: #1a237e;
+    padding: 1rem 0;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo-img {
+    width: 140px;
+}
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+.navbar-nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .2s;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+.navbar-nav li a:hover,
+.signup-btn {
+    background: #3949ab;
+    color: #fff !important;
+}
+.signup-btn {
+    background: #fff;
+    color: #1a237e !important;
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    border: none;
+    transition: background .2s, color .2s;
+}
+.signup-btn:hover {
+    background: #ffb300;
+    color: #fff !important;
+}

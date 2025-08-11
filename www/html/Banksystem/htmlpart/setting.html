@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Password - HSM Bank</title>
+  <style>
+    body, html {
+      height: 100%;
+      background: #f5f7fa;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    .section-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h2 {
+      color: #1a237e;
+      margin-bottom: 2rem;
+    }
+    .settings-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(26,35,126,0.08);
+      min-width: 320px;
+    }
+    .settings-form label {
+      font-weight: 600;
+      color: #222;
+    }
+    .settings-form input {
+      padding: 0.7rem 1rem;
+      border: 1px solid #bdbdbd;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #f7faff;
+    }
+    .settings-form button {
+      margin-top: 1rem;
+      padding: 0.8rem 0;
+      background: #1a237e;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .settings-form button:hover {
+      background: #3f51b5;
+    }
+  </style>
+  <script>
+    // Show new password form if verification is passed
+    function showChangeForm(accno) {
+      document.getElementById("verify-form").style.display = "none";
+      document.getElementById("change-form").style.display = "flex";
+      document.getElementById("accno_new").value = accno;
+    }
+
+    window.addEventListener("DOMContentLoaded", function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('stage') && params.get('stage') === 'verify' && params.has('accno')) {
+        showChangeForm(params.get('accno'));
+      }
+      if (params.has('msg')) {
+        alert(decodeURIComponent(params.get('msg').replace(/\+/g, ' ')));
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="section-container">
+    <h2>Change Password</h2>
+
+    <!-- Step 1: Verify Old Password -->
+    <form id="verify-form" class="settings-form" action="/cgi-bin/verify_password.cgi" method="POST">
+      <label for="accno">Account Number</label>
+      <input type="text" name="accno" id="accno" required>
+      <label for="old_password">Enter Current Password</label>
+      <input type="password" name="old_password" id="old_password" required>
+      <button type="submit">Verify</button>
+    </form>
+
+    <!-- Step 2: Change to New Password -->
+    <form id="change-form" class="settings-form" action="/cgi-bin/setting.cgi" method="POST" style="display: none;">
+      <input type="hidden" name="accno" id="accno_new">
+      <label for="new_password">New Password</label>
+      <input type="password" name="new_password" id="new_password" required>
+      <label for="confirm_password">Confirm New Password</label>
+      <input type="password" name="confirm_password" id="confirm_password" required>
+      <button type="submit">Update Password</button>
+    </form>
+  </div>
+</body>
+</html>

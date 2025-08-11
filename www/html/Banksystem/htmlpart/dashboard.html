@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard - HSM Bank</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/Banksystem/csspart/dashboard.css" />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <img src="/img/homelogo3d.png" alt="Bank Logo" />
+        <span>HSM BANK LTD.</span>
+      </div>
+      <nav>
+        <a href="#" class="active"><span>🏠</span> Dashboard</a>
+        <a href="/Banksystem/htmlpart/accounts.html"><span>💳</span> Accounts</a>
+        <a href="/Banksystem/htmlpart/transaction.html"><span>🔄</span> Transactions</a>
+        <a href="/Banksystem/htmlpart/statement.html"><span>📄</span> Statements</a>
+        <a href="/Banksystem/htmlpart/setting.html"><span>⚙️</span> Settings</a>
+        <a href="/Banksystem/htmlpart/logout.html"><span>🚪</span> Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-title">Dashboard</div>
+        <div class="topbar-user">
+          <span id="welcomeUser">Welcome, User</span>
+          <img src="/img/bank.png" alt="User" />
+        </div>
+      </header>
+
+      <!-- Cards -->
+      <section class="dashboard-cards">
+        <div class="card">
+          <div class="card-title">Total Balance</div>
+          <div class="card-value" id="balanceCard">₹ 0</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Interest Earned</div>
+          <div class="card-value" id="interestCard">₹ 0</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Total Debited</div>
+          <div class="card-value" id="debitCard">₹ 0</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Total Credited</div>
+          <div class="card-value" id="creditCard">₹ 0</div>
+        </div>
+      </section>
+
+      <!-- Chart -->
+      <section class="dashboard-charts">
+        <canvas id="balanceChart" height="120"></canvas>
+      </section>
+
+      <!-- Transactions -->
+      <section class="transaction-section">
+        <h3>Recent Transactions</h3>
+        <div id="transactionList" class="transaction-list">
+          <div>No transactions found</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Hidden fallback accno (if cookie/localStorage missing) -->
+  <input type="hidden" id="accno" value="" />
+
+  <!-- JS -->
+  <script src="/Banksystem/jspart/dashboard.js"></script>
+</body>
+</html>

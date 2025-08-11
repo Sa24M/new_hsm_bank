@@ -1,0 +1,9 @@
+@media (max-width: 900px) {
+    .hero-container, .services-list, .features-list, .budget-list, .results-list, .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-left, .hero-right {
+        min-width: 200px;
+    }
+}

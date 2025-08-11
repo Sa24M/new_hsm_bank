@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transactions - HSM BANK</title>
+  <link rel="stylesheet" href="/Banksystem/csspart/dashboardATSSL.css">
+
+</head>
+<body>
+  <div class="section-container">
+    <h2>Transfer Money</h2>
+    <form id="transferForm" class="transaction-form" action="/cgi-bin/transfer.cgi" method="POST">
+      <label>Your Account No</label>
+      <input type="text" id="fromAccount" name="sender_accNo" required>
+
+      <label>Password</label>
+      <input type="password" id="fromPassword" name="sender_password" required>
+
+      <label>Recipient Account No</label>
+      <input type="text" id="toAccount" name="receiver_accNo" required>
+
+      <label>Amount (₹)</label>
+      <input type="number" id="amount" name="amount" step="0.01" required>
+
+      <label>Remarks</label>
+      <input type="text" id="remarks" name="remarks">
+
+      <input type="hidden" name="submit" value="1">
+
+      <button type="submit">Send Money</button>
+      <div id="transferResult"></div>
+    </form>
+  </div>
+
+  <script src="/Banksystem/script/transaction.js"></script>
+
+</body>
+</html>

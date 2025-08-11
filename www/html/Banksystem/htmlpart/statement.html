@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Statement - HSM Bank</title>
+  <link rel="stylesheet" href="/Banksystem/csspart/statement.css" />
+</head>
+<body>
+<div class="statement-wrapper">
+    <h2>Your Account Statement</h2>
+    <table class="statement-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Sender</th>
+          <th>Receiver</th>
+          <th>Amount (₹)</th>
+          <th>Remarks</th>
+          <th>Sender Bal</th>
+          <th>Receiver Bal</th>
+        </tr>
+      </thead>
+      <tbody id="statementBody">
+        <tr><td colspan="7">Loading...</td></tr>
+      </tbody>
+    </table>
+</div>
+
+<script>
+function readCookie(name) {
+  const cookies = document.cookie.split(";").map(c => c.trim());
+  for (let c of cookies) {
+    if (c.startsWith(name + "=")) {
+      return decodeURIComponent(c.substring(name.length + 1));
+    }
+  }
+  return null;
+}
+function getAccNo() {
+  return readCookie("AccNo") || localStorage.getItem("accno") || "";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  let accno = getAccNo();
+  if(!accno){
+    document.getElementById("statementBody").innerHTML = "<tr><td colspan='7'>No account found. Please login.</td></tr>";
+    return;
+  }
+  fetch(`/cgi-bin/statement.cgi?accno=${encodeURIComponent(accno)}`)
+  .then(res => res.json())
+  .then(data => {
+    let body = document.getElementById("statementBody");
+    body.innerHTML = "";
+    if(!data || !Array.isArray(data) || data.length === 0){
+      body.innerHTML = "<tr><td colspan='7'>No transactions found</td></tr>";
+      return;
+    }
+    data.forEach(t => {
+      let row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${t.DateTime}</td>
+        <td>${t.Sender}</td>
+        <td>${t.Receiver}</td>
+        <td>${t.Amount}</td>
+        <td>${t.Remarks}</td>
+        <td>${t.SenBalance}</td>
+        <td>${t.RecBalance}</td>
+      `;
+      body.appendChild(row);
+    });
+  })
+  .catch(err=>{
+    document.getElementById("statementBody").innerHTML = "<tr><td colspan='7'>Error loading statement</td></tr>";
+  });
+});
+</script>
+</body>
+</html>
