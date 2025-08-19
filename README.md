@@ -10,11 +10,20 @@ It is powered by a **C++ backend** (via CGI scripts), **MySQL database**, and a 
 
 ## ✨ Features
 
-- **Account Management**: Account creation, balance tracking, deposits, withdrawals, and transfers.  
-- **Transaction Logs**: Detailed record of all user transactions.  
-- **Real-Time Dashboard**: Displays balances, income, and expenses dynamically.  
-- **User Authentication**: Credentials secured with **SHA-256 hashing**.  
-- **Loan Services**: Mock loan applications (home, education, vehicle, gold, personal).  
+- **Account Management**: Account creation, balance tracking, deposits, withdrawals, and transfers.
+ - **User Authentication**: Credentials secured with **SHA-256 hashing**.
+ <img width="1920" height="847" alt="Screenshot (93)" src="https://github.com/user-attachments/assets/0b111f58-2815-4bc0-9cdf-427cb69a3d80" />
+ 
+- **Transaction Logs**: Detailed record of all user transactions.
+- <img width="1591" height="927" alt="Screenshot from 2025-08-07 16-05-15" src="https://github.com/user-attachments/assets/6c27d818-1c85-4c37-91c1-f03866c67851" />
+
+- **Real-Time Dashboard**: Displays balances, income, and expenses dynamically.
+  <img width="1843" height="901" alt="Screenshot from 2025-08-11 15-09-27" src="https://github.com/user-attachments/assets/a4d82f4d-f33c-47d7-9ecb-9a36525a5d3b" />
+
+- **Loan Services**: Mock loan applications (home, education, vehicle, gold, personal).
+<img width="1745" height="875" alt="Screenshot (117)" src="https://github.com/user-attachments/assets/ce3f3099-d1cb-4cb4-9e84-d1f280804dda" />
+
+
 - **Password Management**: Secure password updates.  
 
 **Impact:** Streamlined account management, provided real-time financial insights, and ensured secure data handling.
