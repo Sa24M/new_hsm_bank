@@ -1,0 +1,38 @@
+# Ignore compiled executables and binaries
+*.exe
+*.dll
+*.o
+*.obj
+*.a
+*.lib
+*.out
+*.stackdump
+
+# Ignore logs
+*.log
+
+# Ignore temporary or swap files
+*.swp
+*.swo
+*~
+*.tmp
+
+# Ignore Apache installation folders (keep project clean)
+bin/
+conf/
+logs/
+manual/
+modules/
+icons/
+lib/
+include/
+error/
+www/
+cgi-bin/   # compiled executables will be copied here locally, not in repo
+
+# Ignore system/IDE-specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.code-workspace
